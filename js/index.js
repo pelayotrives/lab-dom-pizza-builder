@@ -44,18 +44,38 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  let selectorMushroom = document.querySelectorAll(".mushroom");
+  selectorMushroom.forEach( (eachMushroom) => {
+    if (state.mushrooms) {
+      eachMushroom.style.visibility = 'visible';
+    } else {
+      eachMushroom.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  let selectorGreenPepper = document.querySelectorAll(".green-pepper");
+  selectorGreenPepper.forEach( (eachGreenPepper) => {
+    if (state.greenPeppers) {
+      eachGreenPepper.style.visibility = 'visible';
+    } else {
+      eachGreenPepper.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  let removeSauceClass = document.querySelector(".sauce");
+  removeSauceClass.classList.remove(".sauce-white");
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  let removeCrustClass = document.querySelector(".crust");
+  removeCrustClass.classList.remove(".crust-gluten-free");
 }
 
 function renderButtons() {
@@ -68,16 +88,42 @@ function renderPrice() {
 
 renderEverything();
 
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
+let changeStatePepperoni = () => {
   state.pepperoni = !state.pepperoni;
   renderEverything();
-});
+}
+
+let changeStateMushrooms = () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+}
+
+let changeStateGreenPeppers = () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+}
+
+let changeStateSauce = () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+}
+
+let changeStateCrust = () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+}
+
+// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
+document.querySelector('.btn.btn-pepperoni').addEventListener('click', changeStatePepperoni);
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', changeStateMushrooms);
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', changeStateGreenPeppers);
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector(".btn.btn-sauce").addEventListener("click", changeStateSauce);
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector(".btn.btn-crust").addEventListener("click", changeStateCrust);
